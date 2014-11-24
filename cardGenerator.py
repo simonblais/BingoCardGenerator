@@ -11,7 +11,7 @@ def printAll( strings ) :
     return;
 
 def getNewRandomIndex( max, currentIndices ) :
-    if max <= len(currentIndices) :
+    if max < len(currentIndices) :
         num = 0;
     else :
         num = randint(0, max);
