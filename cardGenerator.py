@@ -105,7 +105,7 @@ print "Generating {} cards with {} indices each".format(nbCards, nbSlots);
 allCards = generateAllCardIndices(nbSlots, nbImages, nbCards);
 
 if (os.path.exists(outImages) == False) :
-        os.mkdir(outImages)
+    os.makedirs(outImages);
 
 cardNum = 0;
 
