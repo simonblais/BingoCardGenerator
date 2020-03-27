@@ -95,40 +95,43 @@ nbImages = len(imagePaths);
 
 print nbImages, "images found";
 
-# number of images in each card
-nbSlots = 24;
+if nbImages == 0:
+    print 'No images found at : {}'.format(pwd)
+else:
+    # number of images in each card
+    nbSlots = 24;
 
-# number of cards
-nbCards = 100;
+    # number of cards
+    nbCards = 100;
 
-# number of rows
-nbRows = 5;
+    # number of rows
+    nbRows = 5;
 
-# number of columns
-nbCols = 5;
+    # number of columns
+    nbCols = 5;
 
-# Skip middle
-skipMiddle = True;
+    # Skip middle
+    skipMiddle = True;
 
-# Square positions in background
-squarePositions = [
-    (160, 790), (426, 790), (692, 790), (958, 790), (1218, 790), 
-    (160, 1053), (426, 1053), (692, 1053), (958, 1053), (1218, 1053),
-    (160, 1318), (426, 1318),             (958, 1318), (1218, 1318),
-    (160, 1581), (426, 1581), (692, 1581), (958, 1581), (1218, 1581),
-    (160, 1844), (426, 1844), (692, 1844), (958, 1844), (1218, 1844)
-    ];
+    # Square positions in background
+    squarePositions = [
+        (160, 790), (426, 790), (692, 790), (958, 790), (1218, 790), 
+        (160, 1053), (426, 1053), (692, 1053), (958, 1053), (1218, 1053),
+        (160, 1318), (426, 1318),             (958, 1318), (1218, 1318),
+        (160, 1581), (426, 1581), (692, 1581), (958, 1581), (1218, 1581),
+        (160, 1844), (426, 1844), (692, 1844), (958, 1844), (1218, 1844)
+        ];
 
-print "Generating {} cards with {} indices each".format(nbCards, nbSlots);
-allCards = generateAllCardIndices(nbSlots, nbImages, nbCards);
+    print "Generating {} cards with {} indices each".format(nbCards, nbSlots);
+    allCards = generateAllCardIndices(nbSlots, nbImages, nbCards);
 
-if (os.path.exists(outImages) == False) :
-    os.makedirs(outImages);
+    if (os.path.exists(outImages) == False) :
+        os.makedirs(outImages);
 
-cardNum = 0;
+    cardNum = 0;
 
-for indices in allCards:
-    result = generateCardImage(indices, imagePaths, nbRows, nbCols, skipMiddle, bgPaths, squarePositions);
-    result.save(outImages + 'card{}.jpg'.format(cardNum));
-    cardNum = cardNum + 1;
+    for indices in allCards:
+        result = generateCardImage(indices, imagePaths, nbRows, nbCols, skipMiddle, bgPaths, squarePositions);
+        result.save(outImages + 'card{}.jpg'.format(cardNum));
+        cardNum = cardNum + 1;
 
